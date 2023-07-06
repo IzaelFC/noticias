@@ -6,7 +6,6 @@ function limparPagina() {
 }
 
 
-
 async function index(){
     limparPagina()
     const lista = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -16,7 +15,7 @@ async function index(){
     for(let i in lista){
         const divs = ['primeiro', 'segundo', 'terceiro', 'quarto', 'quinto', 'sexto', 'setimo', 'oitavo', 'nono', 'decimo']
         const div = document.createElement("div");
-        div.classList.add(divs[i]);
+        div.className = `span-col-1 border-4 border-black rounded-xl ${divs[i]}`;
 
         const titulo = document.createElement("h1");
         titulo.id = "titulo";
@@ -28,7 +27,7 @@ async function index(){
 
         const url = document.createElement("span");
         url.id = "url";
-        url.innerHTML = `<a id='link' href="${site['articles'][lista[i]]['url']}" target="_blank">Notícia completa<a/>`;
+        url.innerHTML = `<a class='mx-auto' id='link' href="${site['articles'][lista[i]]['url']}" target="_blank">Notícia completa<a/>`;
 
         const foto = document.createElement("img");
         foto.id = "foto";
@@ -46,23 +45,19 @@ async function index(){
         document.getElementById('noticias').appendChild(div);
 
         document.querySelectorAll('#titulo').forEach(function(el){
-            el.style.marginLeft = "25px";
-            el.style.marginRight = "25px";
-            el.style.fontSize = "20px";
+            el.className = 'text-orange-500 font-bold mx-auto px-6 text-xl'
         })
     
         document.querySelectorAll('#descricao').forEach(function(el){
-            el.style.marginLeft = "25px";
-            el.style.marginRight = "25px";
-            el.style.fontSize = "15px";
+            el.className = 'text-base mx-auto mb-4 px-8'
         })
     
         document.querySelectorAll('#link').forEach(function(el){
-            el.style.marginBotton = "10px";
+            el.className = 'text-orange-400 hover:text-orange-700 font-bold'
         })
     }
 
-    
+    document.getElementById('noticias').style.display = 'grid'
 }
 
 
@@ -75,4 +70,10 @@ function habilitarBotao() {
       botao.disabled = true;
     }
   }
-  
+
+
+function Enter(event) {
+    if (event.keyCode === 13 & document.getElementById('assunto').value != '') { // 13 representa a tecla "Enter"
+        index();
+    }
+}

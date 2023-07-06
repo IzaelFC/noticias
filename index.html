@@ -6,12 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <script src="scripts.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>HOME</title>
 </head>
-<body>
-    <h1 class="emoji">👇</h1>
-    <input id="assunto" type="text" required oninput="habilitarBotao()" placeholder="Busque noticias aqui ">
-    <button id="botao" onclick="index()" disabled>PESQUISAR</button>
-    <div id="noticias"></div>
+<body class="w-screen">
+    <div class="w-full flex flex-col mt-5 gap-3 items-center">
+        <h1 class="text-3xl">👇</h1>
+        <input class="w-[75%] text-center rounded-md p-1 placeholder:text-black focus:placeholder:text-transparent placeholder:font-normal font-bold outline-none border-4 border-black" id="assunto" type="text" required oninput="habilitarBotao()" onkeypress="Enter(event)" placeholder="Busque noticias aqui ">
+        <button class="w-[25%] sm:text-base text-[10px] mx-3 py-1 enabled:text-orange-500 disabled:text-orange-300 font-bold rounded-md border-4 enabled:border-black disabled:border-black/50" id="botao" onclick="index()" disabled>PESQUISAR</button>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 w-[90%] mx-auto mt-20 mb-10" id="noticias"></div>
 </body>
 </html>
